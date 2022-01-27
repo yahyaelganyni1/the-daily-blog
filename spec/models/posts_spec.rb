@@ -13,7 +13,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'should include correct placeholder text' do
-      expect(response.body).to include('Posts#index')
+      expect(response.body).to include('Welcome to posts index page')
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'should include correct placeholder text' do
-      expect(response.body).to include('Posts#show')
+      expect(response.body).to include('Welcome to posts show page')
     end
   end
 end
