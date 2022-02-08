@@ -1,6 +1,15 @@
-<%= image_tag @user.photo, height: 50 %>
+<%= image_tag @user.photo, width: 100, :class => "rounded mx-auto d-block" %> 
 <h1> <%= @user.name %> </h1>
 <p> <%= @user.bio %> </p>
+<div class="card w-75">
+    <div class="card-body">
+
+        <% @posts.each do |post| %>
+            <h2 class="card-title"> <%= post.title%> </h2>
+            <p class="card-text" > <%= post.text%> </p>
+        <%end%>
+        <%= link_to "show all posts", user_posts_path(@user.id), :class => "btn btn-primary" %>
+    </div>
+</div>
 
 
-<h1> <%= @posts %> </h1>

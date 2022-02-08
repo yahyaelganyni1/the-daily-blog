@@ -1,10 +1,13 @@
-<h1> hello from the user index</h1>
+<div class="row">
+    <% @users.each do |user| %>
+        <div class="card" style="width: 18rem;">
+            <%= image_tag user.photo, :class => "card-img-top" %>
+              <div class="card-body">
 
-<ul>
-<% @users.each do |user| %>
-    <li> 
-    <%= image_tag user.photo, height: 30 %>
-    <%= link_to user.name, user_path(user.id) %>
-    </li>
-<%end%>
-</ul>
+            <%= link_to user.name, user_path(user.id), :class => "card-title" %>
+        </div>
+
+        </div>
+    <%end%>
+
+</div>

@@ -1,1 +1,9 @@
-<h1>Welcome to posts index page</h1>
+<h1> <%= @user.name%> </h1> 
+<div class="card w-75">
+<div class="card-body">
+<% @posts.each do |post| %>
+        <h2 class="card-title"> <%= post.title%> </h2>
+        <p class="card-text" > <%= post.text%> </p>
+<%end%>
+</div>
+</div>
