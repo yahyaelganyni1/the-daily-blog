@@ -76,6 +76,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-gem 'rspec-rails', group: %i[development test]
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
