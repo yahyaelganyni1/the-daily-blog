@@ -1,9 +1,20 @@
-<h1> <%= @user.name%> </h1> 
+<%= image_tag @user.photo, width: 100, :class => "rounded mx-auto d-block" %> 
+<h1> <%= @user.name %> </h1>
+<p> <%= @user.bio %> </p>
 <div class="card w-75">
 <div class="card-body">
 <% @posts.each do |post| %>
         <h2 class="card-title"> <%= post.title%> </h2>
         <p class="card-text" > <%= post.text%> </p>
+          <p> comments: <%= post.comments_counter%> </p>
+                <p> likes: <%= post.likes_counter%> </p>
+                <br/>
+        <% post.recent_comments.each do |comment| %>
+                <p> <%=  comment.text%> </p>
+        <%end%>
+        <%= link_to "view post", user_post_path(post.user.id, post.id), :class => "btn btn-primary" %>
 <%end%>
 </div>
 </div>
+
+

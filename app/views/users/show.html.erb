@@ -7,6 +7,9 @@
         <% @posts.each do |post| %>
             <h2 class="card-title"> <%= post.title%> </h2>
             <p class="card-text" > <%= post.text%> </p>
+            <p> comments: <%= post.comments_counter%> </p>
+            <p> likes: <%= post.likes_counter%> </p>
+
         <%end%>
         <%= link_to "show all posts", user_posts_path(@user.id), :class => "btn btn-primary" %>
     </div>
