@@ -1,1 +1,15 @@
-<h1>Welcome to user index page</h1>
+<div class="row">
+    <% @users.each do |user| %>
+        <div class="card" style="width: 18rem;">
+            <%= image_tag user.photo, :class => "card-img-top" %>
+              <div class="card-body">
+
+            <%= link_to user.name, user_path(user.id), :class => "card-title" %>
+            <p> number of posts: <%= user.posts_counter%> <p>
+
+        </div>
+
+        </div>
+    <%end%>
+
+</div>
