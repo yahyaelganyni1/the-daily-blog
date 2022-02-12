@@ -1,2 +1,11 @@
-<h1>Welcome to posts index page</h1>
-<h2>osts index page</h2>
+
+<%= render partial: "users/user", object: @user %>
+<div class="list comments-list">
+  <% @posts.each do |post| %>
+    <div>
+    <%= render partial: "post", object: post %>
+    <%= render partial: "shared/comment", collection: post.recent_comments %>
+    </div>
+  <% end %>
+</div>
+<button class="button is-small">Pagination</button>

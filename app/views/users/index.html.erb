@@ -1,1 +1,8 @@
-<h1>Welcome to user index page</h1>
+<%= render "header" %>
+<div class="list">
+  <% @users.each do |user| %>
+    <%= link_to user_path(user.id) do %>
+      <%= render partial: "user", object: user %>
+    <% end %>
+  <% end %>
+</div>
