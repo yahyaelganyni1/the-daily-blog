@@ -1,15 +1,8 @@
-<div class="row">
-    <% @users.each do |user| %>
-        <div class="card" style="width: 18rem;">
-            <%= image_tag user.photo, :class => "card-img-top" %>
-              <div class="card-body">
-
-            <%= link_to user.name, user_path(user.id), :class => "card-title" %>
-            <p> number of posts: <%= user.posts_counter%> <p>
-
-        </div>
-
-        </div>
-    <%end%>
-
+<%= render "header" %>
+<div class="list">
+  <% @users.each do |user| %>
+    <%= link_to user_path(user.id) do %>
+      <%= render partial: "user", object: user %>
+    <% end %>
+  <% end %>
 </div>
