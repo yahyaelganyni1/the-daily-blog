@@ -1,35 +1,32 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
-  describe 'GET #index' do
-    before(:example) { get users_path }
+RSpec.describe User, type: :model do
+  describe 'validates' do
+    subject { User.new name: 'Usman Suleiman' }
 
-    it 'should have correct response status' do
-      expect(response).to have_http_status(:ok)
+    before { subject.save }
+
+    it 'should have a name' do
+      subject.name = nil
+      expect(subject).to_not be_valid
     end
 
-    it 'should render correct template' do
-      expect(response).to render_template(:index)
+    it 'should have an alpha name' do
+      subject.name = ' '
+      expect(subject).to_not be_valid
     end
 
-    it 'should include correct placeholder text' do
-      expect(response.body).to include('Welcome to user index page')
+    it 'should have a postive integer posts counter' do
+      subject.posts_counter = -1
+      expect(subject).to_not be_valid
     end
   end
 
-  describe 'GET #show' do
-    before(:example) { get user_path(1) }
+  describe '#recent_posts' do
+    subject { User.first }
 
-    it 'should have correct response status' do
-      expect(response).to have_http_status(:ok)
-    end
-
-    it 'should render correct template' do
-      expect(response).to render_template(:show)
-    end
-
-    it 'should include correct placeholder text' do
-      expect(response.body).to include('Welcome to user show page')
+    it 'should return 3 posts' do
+      expect(subject.recent_posts.length).to be(3)
     end
   end
 end
