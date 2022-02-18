@@ -75,3 +75,5 @@ RSpec.configure do |config|
   config.extend ControllerMacros, type: :feature
   config.include Helpers, type: :feature
 end
+
+Capybara.javascript_driver = :selenimum_chrome
