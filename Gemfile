@@ -78,8 +78,11 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
+  gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'selenium-webdriver'
   gem 'database_cleaner-active_record'
+  gem 'factory_bot'
 end
+gem 'rspec-rails', group: %i[development test]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

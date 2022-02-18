@@ -9,9 +9,9 @@ require 'rspec/rails'
 require 'devise'
 require 'capybara/rails'
 require_relative 'support/controller_macros'
-# require_relative 'support/factory_bot'
-# require_relative 'support/database_cleaner'
-# require_relative 'support/helpers'
+require_relative 'support/factory_bot'
+require_relative 'support/database_cleaner'
+require_relative 'support/helpers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -43,7 +43,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -67,4 +67,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+  config.extend ControllerMacros, type: :controller
+  config.extend ControllerMacros, type: :request
+  config.extend ControllerMacros, type: :feature
+  config.include Helpers, type: :feature
 end
